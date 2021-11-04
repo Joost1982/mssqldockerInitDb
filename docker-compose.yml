@@ -5,7 +5,7 @@ services:
     build: ./mssql_database
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Geheim123"
+      SA_PASSWORD: ${SA_PASSWORD}
     ports:
       - "1433:1433"
     volumes:
