@@ -1,0 +1,15 @@
+version: "3"  # optional since v1.27.0
+
+services:
+  ms-sql-server:
+    build: ./mssql_database
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Geheim123"
+    ports:
+      - "1433:1433"	    # hier nog wel portbinding, omdat we de database van buitenaf willen benaderen via sql management studio (en dotnet ef update)
+    volumes: 
+      - sqlvolumeTestdb:/var/opt/mssql    #add data volume zodat data bewaard blijft als container verwijderd wordt
+
+volumes:
+  sqlvolumeTestdb:
